@@ -1,14 +1,10 @@
 :root {
-  --grey-100: #f7f7f7;
-  --grey-200: #eae9e8;
-  --grey-300: #dcdcda;
   --grey-700: #646864;
   --grey-800: #404241;
   --grey-900: #2f3130;
   --grey-1000: #202121;
   --blue-700: #406cc4;
-  --red-700: #c63f46;
-  --green-700: #4b7d04;
+  --signin-border: #d8dcde;
 }
 
 body {
@@ -50,34 +46,31 @@ body {
 .page {
   align-items: flex-start;
   background: #fff;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   min-height: calc(100vh - 48px);
-  padding: 72px 24px;
+  padding: 40px 15px;
 }
 
-.consent-card {
-  text-align: left;
-}
-
-.consent-card,
-.error-card,
-.outcome-card {
-  background: #fff;
-  border: 1px solid #d8dcde;
+.auth-well {
+  border: 1px solid var(--signin-border) !important;
   border-radius: 4px;
   box-sizing: border-box;
-  max-width: 480px;
-  padding: 40px;
+  max-width: 900px;
+  padding: 40px !important;
   width: 100%;
+}
+
+.auth-column {
+  max-width: 354px;
 }
 
 .identity {
   align-items: center;
   display: flex;
   gap: 12px;
-  margin-bottom: 24px;
-  text-align: left;
+  margin: 0 0 16px;
 }
 
 .no-logo .identity {
@@ -102,32 +95,32 @@ body {
   background: var(--grey-800);
 }
 
-.consent-card h1,
-.error-card h1,
-.outcome-card h1 {
+.auth-well h1 {
   font-size: 22px;
   font-weight: 600;
   letter-spacing: normal;
   line-height: 28px;
-  margin: 0 0 8px;
+  margin: 0;
 }
 
-.consent-card h2 {
-  margin: 0 0 16px;
+.auth-well h2 {
+  margin: 0 0 8px;
 }
 
 .description {
   display: block;
-  margin: 0 0 16px;
+  margin: 0;
 }
 
-.account-line {
-  display: block;
-  margin: 0 0 4px;
+.auth-break {
+  background: var(--signin-border);
+  border: 0;
+  height: 1px;
+  margin: 16px -40px;
 }
 
 .agent-notice {
-  margin: 20px 0;
+  margin: 0 0 16px;
 }
 
 .permissions {
@@ -137,11 +130,16 @@ body {
 }
 
 .permission {
-  margin: 0 0 16px;
+  margin: 0 0 28px;
 }
 
 .permission:last-child {
   margin-bottom: 0;
+}
+
+.permission-detail {
+  display: block;
+  margin-top: 8px;
 }
 
 .muted {
@@ -152,67 +150,17 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 24px 0;
+  margin: 28px 0 0;
 }
 
 .actions {
   display: flex;
   gap: 12px;
+  margin-top: 16px;
+  max-width: 354px;
 }
 
 .not-you {
   display: inline-block;
-  margin-top: 24px;
-}
-
-.error-card,
-.outcome-card {
-  text-align: center;
-}
-
-.error-card p,
-.outcome-card p,
-.error-card [class],
-.outcome-card [data-garden-id] {
-  margin-bottom: 24px;
-}
-
-.error-mark,
-.success-mark {
-  align-items: center;
-  border-radius: 50%;
-  color: #fff;
-  display: flex;
-  font-size: 20px;
-  font-weight: 600;
-  height: 40px;
-  justify-content: center;
-  margin: 0 auto 16px;
-  width: 40px;
-}
-
-.error-mark {
-  background: var(--red-700);
-}
-
-.success-mark {
-  background: var(--blue-700);
-}
-
-@media (max-width: 600px) {
-  .prototype-bar {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .page {
-    padding: 28px 14px;
-  }
-
-  .consent-card,
-  .error-card,
-  .outcome-card {
-    padding: 24px 20px;
-  }
+  margin-top: 16px;
 }

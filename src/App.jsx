@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Anchor, Button } from '@zendeskgarden/react-buttons'
 import { ThemeProvider } from '@zendeskgarden/react-theming'
-import { Alert } from '@zendeskgarden/react-notifications'
-import { MD, SM, XL } from '@zendeskgarden/react-typography'
+import { Alert, Well } from '@zendeskgarden/react-notifications'
+import { MD, XL } from '@zendeskgarden/react-typography'
 import { FLORA_THEME } from './flora/theme'
 import './App.css'
 
@@ -39,14 +39,17 @@ function PrototypeBar({ screen, setScreen }) {
 function ErrorScreen() {
   return (
     <main className="page">
-      <section className="error-card">
-        <div className="error-mark">!</div>
-        <XL tag="h1">This link can’t be used</XL>
-        <MD>
-          It may be broken or expired. Go back to the app that sent you here and try again. If that does not work, contact the person or team who gave you the link.
-        </MD>
-        <Button isPrimary isStretched onClick={() => window.location.reload()}>Go back</Button>
-      </section>
+      <Well className="auth-well">
+        <div className="auth-column">
+          <XL tag="h1">This link can’t be used</XL>
+          <MD>
+            It may be broken or expired. Go back to the app that sent you here and try again. If that does not work, contact the person or team who gave you the link.
+          </MD>
+          <div className="actions">
+            <Button isPrimary isStretched onClick={() => window.location.reload()}>Go back</Button>
+          </div>
+        </div>
+      </Well>
     </main>
   )
 }
@@ -57,56 +60,60 @@ function ConsentScreen({ data }) {
   if (outcome) {
     return (
       <main className="page">
-        <section className="outcome-card">
-          <div className={outcome === 'allowed' ? 'success-mark' : 'error-mark'}>
-            {outcome === 'allowed' ? '✓' : '×'}
+        <Well className="auth-well">
+          <div className="auth-column">
+            <XL tag="h1">{outcome === 'allowed' ? 'Access allowed' : 'Access denied'}</XL>
+            <MD>This is a prototype. No access was granted or denied.</MD>
+            <div className="actions">
+              <Button isStretched onClick={() => setOutcome(null)}>Return to consent</Button>
+            </div>
           </div>
-          <XL tag="h1">{outcome === 'allowed' ? 'Access allowed' : 'Access denied'}</XL>
-          <MD>This is a prototype. No access was granted or denied.</MD>
-          <Button isStretched onClick={() => setOutcome(null)}>Return to consent</Button>
-        </section>
+        </Well>
       </main>
     )
   }
 
   return (
     <main className="page">
-      <section className={`consent-card${data.logo ? '' : ' no-logo'}`} aria-label="OAuth consent">
+      <Well className={`auth-well${data.logo ? '' : ' no-logo'}`} aria-label="OAuth consent">
         <div className="identity">
           {data.logo && <div className={`app-logo ${data.agent ? 'agent-logo' : ''}`}>{data.logo}</div>}
           <div>
             <MD isBold>{data.client}</MD>
-            <SM className="muted">by {data.company}</SM>
+            <MD className="muted">by {data.company}</MD>
           </div>
         </div>
         <XL tag="h1">Allow {data.client} to access your Zendesk account?</XL>
         <MD className="description">{data.description}</MD>
-        <MD className="account-line">acme.zendesk.com</MD>
-        <MD className="account-line">Signed in as caroline@acme.com</MD>
-        {data.agent && (
-          <Alert type="info" className="agent-notice">
-            An external AI agent is asking for this access.
-          </Alert>
-        )}
-        <MD isBold tag="h2">This application would be able to:</MD>
-        <ul className="permissions">
-          {permissions.map((permission) => (
-            <li className="permission" key={permission.title}>
-              <MD isBold>{permission.title}</MD>
-              <SM className="muted">{permission.detail}</SM>
-            </li>
-          ))}
-        </ul>
-        <div className="duration">
-          <MD>Access lasts until you or an admin revokes it, or until the token expires.</MD>
-          <Anchor href="https://acme.zendesk.com/users/me">You can revoke access at any time under your profile settings.</Anchor>
+        <MD>acme.zendesk.com</MD>
+        <MD>Signed in as caroline@acme.com</MD>
+        <hr className="auth-break" />
+        <div className="auth-column">
+          {data.agent && (
+            <Alert type="info" className="agent-notice">
+              An external AI agent is asking for this access.
+            </Alert>
+          )}
+          <MD isBold tag="h2">This application would be able to:</MD>
+          <ul className="permissions">
+            {permissions.map((permission) => (
+              <li className="permission" key={permission.title}>
+                <MD isBold>{permission.title}</MD>
+                <MD className="muted permission-detail">{permission.detail}</MD>
+              </li>
+            ))}
+          </ul>
+          <div className="duration">
+            <MD>Access lasts until you or an admin revokes it, or until the token expires.</MD>
+            <Anchor href="https://acme.zendesk.com/users/me">You can revoke access at any time under your profile settings.</Anchor>
+          </div>
+          <div className="actions">
+            <Button isStretched onClick={() => setOutcome('denied')}>Deny</Button>
+            <Button isPrimary isStretched onClick={() => setOutcome('allowed')}>Allow</Button>
+          </div>
+          <Anchor href="#not-you" className="not-you">Not caroline@acme.com?</Anchor>
         </div>
-        <div className="actions">
-          <Button isStretched onClick={() => setOutcome('denied')}>Deny</Button>
-          <Button isPrimary isStretched onClick={() => setOutcome('allowed')}>Allow</Button>
-        </div>
-        <Anchor href="#not-you" className="not-you">Not caroline@acme.com?</Anchor>
-      </section>
+      </Well>
     </main>
   )
 }
