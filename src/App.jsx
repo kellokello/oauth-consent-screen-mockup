@@ -89,6 +89,7 @@ function ConsentScreen({ data }) {
           <MD>acme.zendesk.com</MD>
           <MD>Signed in as caroline@acme.com</MD>
         </section>
+        <hr className="auth-break" />
         <section className="section">
           {data.agent && (
             <Alert type="info" className="agent-notice">
