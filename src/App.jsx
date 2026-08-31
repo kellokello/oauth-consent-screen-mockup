@@ -85,11 +85,11 @@ function ConsentScreen({ data }) {
           <XL tag="h1">Allow {data.client} to access your Zendesk account?</XL>
           <MD className="description">{data.description}</MD>
         </section>
+        <hr className="auth-break" />
         <section className="section">
           <MD>acme.zendesk.com</MD>
           <MD>Signed in as caroline@acme.com</MD>
         </section>
-        <hr className="auth-break" />
         <section className="section">
           {data.agent && (
             <Alert type="info" className="agent-notice">

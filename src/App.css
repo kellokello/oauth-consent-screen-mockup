@@ -47,7 +47,7 @@ body {
 
 .page {
   align-items: center;
-  background: var(--grey-100);
+  background: #fff;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
