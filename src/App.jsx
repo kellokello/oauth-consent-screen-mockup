@@ -113,7 +113,9 @@ function ConsentScreen({ data }) {
             <Button isStretched onClick={() => setOutcome('denied')}>Deny</Button>
             <Button isPrimary isStretched onClick={() => setOutcome('allowed')}>Allow</Button>
           </div>
-          <Anchor href="#not-you" className="not-you">Not caroline@acme.com?</Anchor>
+          <div className="not-you">
+            <MD>Not Caroline Kello? <Anchor href="#not-you">Sign in</Anchor> with a different account</MD>
+          </div>
         </section>
       </Well>
     </main>
