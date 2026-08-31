@@ -90,12 +90,12 @@ function ConsentScreen({ data }) {
           <MD>Signed in as Caroline Kello (caroline@acme.com)</MD>
         </section>
         <section className="section">
+          <hr className="auth-break" />
           {data.agent && (
             <Alert type="info" className="agent-notice">
               An external AI agent is asking for this access.
             </Alert>
           )}
-          <hr className="auth-break" />
           <MD isBold tag="h2">This application would be able to:</MD>
           <ul className="permissions">
             {permissions.map((permission) => (

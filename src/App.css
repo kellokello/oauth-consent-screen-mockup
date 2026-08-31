@@ -84,12 +84,12 @@ body {
   margin-top: 0;
 }
 
-.agent-notice {
-  margin: 0;
+.auth-break + .agent-notice {
+  margin-top: 32px;
 }
 
-.agent-notice + .auth-break {
-  margin-top: 32px;
+.agent-notice {
+  margin: 0 0 16px;
 }
 
 .identity {
