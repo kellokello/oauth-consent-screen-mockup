@@ -105,6 +105,10 @@ body {
 .consent-card h1,
 .error-card h1,
 .outcome-card h1 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 28px;
   margin: 0 0 8px;
 }
 
@@ -122,14 +126,8 @@ body {
   margin: 0 0 4px;
 }
 
-.divider {
-  background: var(--grey-200);
-  height: 1px;
-  margin: 24px 0;
-}
-
 .agent-notice {
-  margin: 0 0 20px;
+  margin: 20px 0;
 }
 
 .permissions {
@@ -139,12 +137,11 @@ body {
 }
 
 .permission {
-  border-top: 1px solid var(--grey-200);
-  padding: 12px 0;
+  margin: 0 0 16px;
 }
 
 .permission:last-child {
-  border-bottom: 1px solid var(--grey-200);
+  margin-bottom: 0;
 }
 
 .muted {

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Anchor, Button } from '@zendeskgarden/react-buttons'
 import { ThemeProvider } from '@zendeskgarden/react-theming'
 import { Alert } from '@zendeskgarden/react-notifications'
-import { MD, SM, XXL } from '@zendeskgarden/react-typography'
+import { MD, SM, XL } from '@zendeskgarden/react-typography'
 import { FLORA_THEME } from './flora/theme'
 import './App.css'
 
@@ -14,7 +14,7 @@ const SCREENS = {
 }
 
 const permissions = [
-  { title: 'Read all data', detail: 'This access is broad. It includes every resource that has a read permission.', risk: 'broad' },
+  { title: 'Read all data', detail: 'This access is broad. It includes every resource that has a read permission.' },
   { title: 'View tickets', detail: 'Includes ticket fields, comments, attachments, and ticket history.' },
   { title: 'View users and organizations', detail: 'Includes customer and organization details.' },
   { title: 'View business rules', detail: 'Includes triggers, automations, and macros.' },
@@ -41,7 +41,7 @@ function ErrorScreen() {
     <main className="page">
       <section className="error-card">
         <div className="error-mark">!</div>
-        <XXL tag="h1" isBold>This link can’t be used</XXL>
+        <XL tag="h1">This link can’t be used</XL>
         <MD>
           It may be broken or expired. Go back to the app that sent you here and try again. If that does not work, contact the person or team who gave you the link.
         </MD>
@@ -61,7 +61,7 @@ function ConsentScreen({ data }) {
           <div className={outcome === 'allowed' ? 'success-mark' : 'error-mark'}>
             {outcome === 'allowed' ? '✓' : '×'}
           </div>
-          <XXL tag="h1" isBold>{outcome === 'allowed' ? 'Access allowed' : 'Access denied'}</XXL>
+          <XL tag="h1">{outcome === 'allowed' ? 'Access allowed' : 'Access denied'}</XL>
           <MD>This is a prototype. No access was granted or denied.</MD>
           <Button isStretched onClick={() => setOutcome(null)}>Return to consent</Button>
         </section>
@@ -79,20 +79,19 @@ function ConsentScreen({ data }) {
             <SM className="muted">by {data.company}</SM>
           </div>
         </div>
+        <XL tag="h1">Allow {data.client} to access your Zendesk account?</XL>
+        <MD className="description">{data.description}</MD>
+        <MD className="account-line">acme.zendesk.com</MD>
+        <MD className="account-line">Signed in as caroline@acme.com</MD>
         {data.agent && (
           <Alert type="info" className="agent-notice">
             An external AI agent is asking for this access.
           </Alert>
         )}
-        <XXL tag="h1" isBold>Allow {data.client} to access your Zendesk account?</XXL>
-        <MD className="description">{data.description}</MD>
-        <MD className="account-line">Account: acme.zendesk.com</MD>
-        <MD className="account-line">Signed in as caroline@acme.com</MD>
-        <div className="divider" />
         <MD isBold tag="h2">This application would be able to:</MD>
         <ul className="permissions">
           {permissions.map((permission) => (
-            <li className={permission.risk ? `permission ${permission.risk}` : 'permission'} key={permission.title}>
+            <li className="permission" key={permission.title}>
               <MD isBold>{permission.title}</MD>
               <SM className="muted">{permission.detail}</SM>
             </li>
