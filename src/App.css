@@ -67,11 +67,14 @@ body {
   width: 100%;
 }
 
+.section + .section {
+  margin-top: 32px;
+}
+
 .identity {
   align-items: center;
   display: flex;
   gap: 12px;
-  margin: 0 0 16px;
 }
 
 .no-logo .identity {
@@ -107,16 +110,16 @@ body {
 
 .auth-well h2 {
   color: var(--grey-1000);
-  margin: 16px 0 8px;
+  margin: 0 0 16px;
 }
 
 .description {
   display: block;
-  margin: 0;
+  margin-top: 8px;
 }
 
 .agent-notice {
-  margin: 16px 0 0;
+  margin: 0 0 16px;
 }
 
 .permissions {
@@ -126,7 +129,7 @@ body {
 }
 
 .permission {
-  margin: 0 0 28px;
+  margin: 0 0 16px;
 }
 
 .permission:last-child {
@@ -142,17 +145,15 @@ body {
   color: var(--grey-800);
 }
 
-.duration {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 28px 0 0;
+.duration-link {
+  display: inline-block;
+  margin-top: 8px;
 }
 
 .actions {
   display: flex;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 32px;
 }
 
 .not-you {
