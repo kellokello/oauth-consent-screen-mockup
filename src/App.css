@@ -1,10 +1,12 @@
 :root {
+  --grey-100: #f7f7f7;
+  --grey-200: #eae9e8;
+  --grey-300: #dcdcda;
   --grey-700: #646864;
   --grey-800: #404241;
   --grey-900: #2f3130;
   --grey-1000: #202121;
   --blue-700: #406cc4;
-  --signin-border: #d8dcde;
 }
 
 body {
@@ -44,8 +46,8 @@ body {
 }
 
 .page {
-  align-items: flex-start;
-  background: #fff;
+  align-items: center;
+  background: var(--grey-100);
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -54,16 +56,15 @@ body {
 }
 
 .auth-well {
-  border: 1px solid var(--signin-border) !important;
+  background: #fff !important;
+  border: 1px solid var(--grey-300) !important;
   border-radius: 4px;
   box-sizing: border-box;
-  max-width: 900px;
+  color: var(--grey-900);
+  margin: 0 auto;
+  max-width: 434px;
   padding: 40px !important;
   width: 100%;
-}
-
-.auth-column {
-  max-width: 354px;
 }
 
 .identity {
@@ -96,6 +97,7 @@ body {
 }
 
 .auth-well h1 {
+  color: var(--grey-1000);
   font-size: 22px;
   font-weight: 600;
   letter-spacing: normal;
@@ -104,7 +106,8 @@ body {
 }
 
 .auth-well h2 {
-  margin: 0 0 8px;
+  color: var(--grey-1000);
+  margin: 16px 0 8px;
 }
 
 .description {
@@ -112,15 +115,8 @@ body {
   margin: 0;
 }
 
-.auth-break {
-  background: var(--signin-border);
-  border: 0;
-  height: 1px;
-  margin: 16px -40px;
-}
-
 .agent-notice {
-  margin: 0 0 16px;
+  margin: 16px 0 0;
 }
 
 .permissions {
@@ -143,7 +139,7 @@ body {
 }
 
 .muted {
-  color: var(--grey-700);
+  color: var(--grey-800);
 }
 
 .duration {
@@ -157,7 +153,6 @@ body {
   display: flex;
   gap: 12px;
   margin-top: 16px;
-  max-width: 354px;
 }
 
 .not-you {
