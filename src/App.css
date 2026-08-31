@@ -62,7 +62,9 @@ body {
   box-sizing: border-box;
   color: var(--grey-900);
   margin: 0 auto;
-  max-width: 434px;
+  /* 720px: consent is a reading task, not a one-field form. Garden has no
+     fixed auth-page width. 40px padding leaves 640px of content. */
+  max-width: 720px;
   padding: 40px !important;
   width: 100%;
 }
