@@ -80,8 +80,16 @@ body {
   margin: 32px -40px;
 }
 
-.auth-break + .section {
+.section > .auth-break:first-child {
   margin-top: 0;
+}
+
+.agent-notice {
+  margin: 0;
+}
+
+.agent-notice + .auth-break {
+  margin-top: 32px;
 }
 
 .identity {
@@ -129,10 +137,6 @@ body {
 .description {
   display: block;
   margin-top: 8px;
-}
-
-.agent-notice {
-  margin: 0 0 16px;
 }
 
 .permissions {

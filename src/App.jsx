@@ -85,7 +85,6 @@ function ConsentScreen({ data }) {
           <XL tag="h1">Allow {data.client} to access your Zendesk account?</XL>
           <MD className="description">{data.description}</MD>
         </section>
-        <hr className="auth-break" />
         <section className="section">
           <MD>support.acme.com (acme.zendesk.com)</MD>
           <MD>Signed in as Caroline Kello (caroline@acme.com)</MD>
@@ -96,6 +95,7 @@ function ConsentScreen({ data }) {
               An external AI agent is asking for this access.
             </Alert>
           )}
+          <hr className="auth-break" />
           <MD isBold tag="h2">This application would be able to:</MD>
           <ul className="permissions">
             {permissions.map((permission) => (
