@@ -56,26 +56,20 @@ body {
   padding: 72px 24px;
 }
 
+.consent-card {
+  text-align: left;
+}
+
 .consent-card,
 .error-card,
 .outcome-card {
   background: #fff;
+  border: 1px solid #d8dcde;
+  border-radius: 4px;
   box-sizing: border-box;
   max-width: 480px;
   padding: 40px;
   width: 100%;
-}
-
-.account-chip {
-  border: 1px solid var(--grey-300);
-  border-radius: 999px;
-  color: var(--grey-700);
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 16px;
-  margin-bottom: 24px;
-  padding: 4px 10px;
 }
 
 .identity {
@@ -83,12 +77,18 @@ body {
   display: flex;
   gap: 12px;
   margin-bottom: 24px;
+  text-align: left;
 }
 
-.app-logo,
-.app-logo-placeholder {
+.no-logo .identity {
+  display: block;
+}
+
+.app-logo {
   align-items: center;
+  background: var(--blue-700);
   border-radius: 4px;
+  color: #fff;
   display: flex;
   flex: 0 0 auto;
   font-size: 20px;
@@ -98,18 +98,8 @@ body {
   width: 40px;
 }
 
-.app-logo {
-  background: var(--blue-700);
-  color: #fff;
-}
-
 .agent-logo {
   background: var(--grey-800);
-}
-
-.app-logo-placeholder {
-  background: var(--grey-100);
-  border: 1px solid var(--grey-200);
 }
 
 .consent-card h1,
@@ -128,9 +118,8 @@ body {
 }
 
 .account-line {
-  background: var(--grey-100);
-  border-radius: 4px;
-  padding: 12px;
+  display: block;
+  margin: 0 0 4px;
 }
 
 .divider {
@@ -150,10 +139,7 @@ body {
 }
 
 .permission {
-  align-items: flex-start;
   border-top: 1px solid var(--grey-200);
-  display: flex;
-  gap: 12px;
   padding: 12px 0;
 }
 
@@ -161,30 +147,14 @@ body {
   border-bottom: 1px solid var(--grey-200);
 }
 
-.permission-icon {
-  align-items: center;
-  background: var(--blue-700);
-  border-radius: 50%;
-  color: #fff;
-  display: flex;
-  flex: 0 0 auto;
-  font-size: 11px;
-  font-weight: 600;
-  height: 18px;
-  justify-content: center;
-  margin-top: 1px;
-  width: 18px;
-}
-
-.permission.broad .permission-icon {
-  background: var(--red-700);
-}
-
 .muted {
   color: var(--grey-700);
 }
 
 .duration {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin: 24px 0;
 }
 

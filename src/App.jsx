@@ -71,12 +71,9 @@ function ConsentScreen({ data }) {
 
   return (
     <main className="page">
-      <section className="consent-card" aria-label="OAuth consent">
-        <div className="account-chip">acme.zendesk.com</div>
+      <section className={`consent-card${data.logo ? '' : ' no-logo'}`} aria-label="OAuth consent">
         <div className="identity">
-          {data.logo
-            ? <div className={`app-logo ${data.agent ? 'agent-logo' : ''}`}>{data.logo}</div>
-            : <div className="app-logo-placeholder" aria-hidden="true" />}
+          {data.logo && <div className={`app-logo ${data.agent ? 'agent-logo' : ''}`}>{data.logo}</div>}
           <div>
             <MD isBold>{data.client}</MD>
             <SM className="muted">by {data.company}</SM>
@@ -89,27 +86,21 @@ function ConsentScreen({ data }) {
         )}
         <XXL tag="h1" isBold>Allow {data.client} to access your Zendesk account?</XXL>
         <MD className="description">{data.description}</MD>
-        <div className="account-line">
-          <MD><strong>Account:</strong> acme.zendesk.com · Signed in as caroline@acme.com</MD>
-        </div>
+        <MD className="account-line">Account: acme.zendesk.com</MD>
+        <MD className="account-line">Signed in as caroline@acme.com</MD>
         <div className="divider" />
         <MD isBold tag="h2">This application would be able to:</MD>
         <ul className="permissions">
           {permissions.map((permission) => (
             <li className={permission.risk ? `permission ${permission.risk}` : 'permission'} key={permission.title}>
-              <span className="permission-icon">{permission.risk ? '!' : '✓'}</span>
-              <div>
-                <MD isBold>{permission.title}</MD>
-                <SM className="muted">{permission.detail}</SM>
-              </div>
+              <MD isBold>{permission.title}</MD>
+              <SM className="muted">{permission.detail}</SM>
             </li>
           ))}
         </ul>
         <div className="duration">
-          <MD>
-            <strong>Access lasts until you or an admin revokes it, or until the token expires.</strong>
-            {' '}You can revoke access at any time under your profile settings.
-          </MD>
+          <MD>Access lasts until you or an admin revokes it, or until the token expires.</MD>
+          <Anchor href="https://acme.zendesk.com/users/me">You can revoke access at any time under your profile settings.</Anchor>
         </div>
         <div className="actions">
           <Button isStretched onClick={() => setOutcome('denied')}>Deny</Button>
